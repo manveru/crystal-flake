@@ -30,8 +30,6 @@ lib.fix (compiler:
 
     buildFlags = [ "all" "docs" ];
 
-    patches = [ ./patches/pr_10964.diff ];
-
     LLVM_CONFIG = "${llvm_11.dev}/bin/llvm-config";
     CRYSTAL_LIBRARY_PATH = "${placeholder "lib"}/crystal";
     FLAGS = [ "--threads=\${NIX_BUILD_CORES}" ];
