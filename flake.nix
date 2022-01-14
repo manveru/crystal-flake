@@ -6,25 +6,25 @@
     utils.url = "github:kreisys/flake-utils";
 
     crystal-source = {
-      url = "github:crystal-lang/crystal/1.2.2";
+      url = "github:crystal-lang/crystal/1.3.1";
       flake = false;
     };
 
     crystal-i686-linux = {
       url =
-        "https://github.com/crystal-lang/crystal/releases/download/1.2.2/crystal-1.2.2-1-linux-x86_64.tar.gz";
+        "https://github.com/crystal-lang/crystal/releases/download/1.3.1/crystal-1.3.1-1-linux-x86_64.tar.gz";
       flake = false;
     };
 
     crystal-x86_64-darwin = {
       url =
-        "https://github.com/crystal-lang/crystal/releases/download/1.2.2/crystal-1.2.2-1-linux-x86_64.tar.gz";
+        "https://github.com/crystal-lang/crystal/releases/download/1.3.1/crystal-1.3.1-1-linux-x86_64.tar.gz";
       flake = false;
     };
 
     crystal-x86_64-linux = {
       url =
-        "https://github.com/crystal-lang/crystal/releases/download/1.2.2/crystal-1.2.2-1-linux-x86_64.tar.gz";
+        "https://github.com/crystal-lang/crystal/releases/download/1.3.1/crystal-1.3.1-1-linux-x86_64.tar.gz";
       flake = false;
     };
 
