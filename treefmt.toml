@@ -1,0 +1,7 @@
+[formatter.nix]
+command = "nixfmt"
+includes = ["*.nix"]
+
+[formatter.crystal]
+command = "crystal tool format"
+includes = ["*.cr"]

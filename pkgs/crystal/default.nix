@@ -1,4 +1,4 @@
-{ lib, llvmPackages_11, clang11Stdenv, llvm_11, removeReferencesTo, makeWrapper
+{ lib, llvmPackages, clang11Stdenv, llvm_11, removeReferencesTo, makeWrapper
 , tzdata, pkg-config, which, readline, openssl, libxml2, git, bdwgc, libevent
 , zlib, libyaml, gmp, pcre, hostname, coreutils, callPackage, crystal-bin, src
 , version, doCheck ? false }:
@@ -108,7 +108,7 @@ lib.fix (compiler:
 
       wrapProgram $bin/bin/crystal \
         --suffix PATH : ${
-          lib.makeBinPath [ pkg-config llvmPackages_11.clang which ]
+          lib.makeBinPath [ pkg-config llvmPackages.clang which ]
         } \
         --suffix CRYSTAL_PATH : lib:$lib/crystal \
         --suffix LLVM_CONFIG : "${llvm_11.dev}/bin/llvm-config" \
