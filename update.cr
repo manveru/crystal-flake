@@ -3,6 +3,38 @@
 require "json"
 require "http/client"
 require "levenshtein"
+require "string_scanner"
+
+# A partial parser of the netrc format
+# No support for default, account, or macdef)
+class Netrc
+  def self.parse
+    file = File.read(File.expand_path("~/.netrc", home: true))
+    s = StringScanner.new(file)
+    machines = {} of String => Hash(String, String)
+    machine = ""
+
+    until s.eos?
+      if s.scan(/(default|macdef)\s*/)
+        raise "Unsupported token '#{s[1]}' in .netrc"
+      end
+
+      if s.scan(/machine\s+(\S+)/)
+        machine = s[1]
+        machines[machine] = {} of String => String
+      end
+
+      if s.scan(/(\S+)\s+(\S+)/)
+        raise "Unexpected token '#{s[1]}' in .netrc, expected machine" if machine == ""
+        machines[machine][s[1]] = s[2]
+      end
+
+      s.scan(/\s*/)
+    end
+
+    machines
+  end
+end
 
 class Release
   include JSON::Serializable
@@ -15,41 +47,66 @@ class Release
   end
 end
 
-def update_crystal
+enum Recency
+  Latest
+  Newest
+end
+
+NETRC = Netrc.parse
+
+def update(org : String, repo : String, recency = Recency::Latest)
   meta = JSON.parse(`nix flake metadata --json`)
   nodes = meta["locks"]["nodes"]
 
-  mapping = {
-    "x86_64-darwin" => "darwin-x86_64",
-    "x86_64-linux"  => "linux-x86_64",
-    "i686-linux"    => "linux-i686",
-  }
+  url = URI.parse("https://api.github.com")
+  client = HTTP::Client.new(url)
+  client.basic_auth(NETRC[url.host]["login"], NETRC[url.host]["password"])
 
-  response = HTTP::Client.get("https://api.github.com/repos/crystal-lang/crystal/releases/latest")
-  release = Release.from_json(response.body)
-
-  puts "latest release is #{release.tag_name}"
+  release =
+    case recency
+    in Recency::Latest
+      response = client.get("/repos/#{org}/#{repo}/releases/latest")
+      Release.from_json(response.body)
+    in Recency::Newest
+      response = client.get("/repos/#{org}/#{repo}/releases")
+      Array(Release).from_json(response.body).first
+    end
 
   old_source = begin
-    o = nodes["crystal-src"]["original"]
+    o = nodes["#{repo}-src"]["original"]
     "#{o["type"]}:#{o["owner"]}/#{o["repo"]}/#{o["ref"]}"
   end
-  new_source = "github:crystal-lang/crystal/#{release.tag_name}"
+
+  new_source = "github:#{org}/#{repo}/#{release.tag_name}"
+
+  if old_source == new_source
+    return
+  else
+    puts "updating #{old_source} -> #{new_source}"
+  end
 
   replacements = {
     old_source                  => new_source,
-    /crystalVersion = "[^"]+";/ => %(crystalVersion = "#{release.tag_name}";),
+    /#{repo}Version = "[^"]+";/ => %(#{repo}Version = "#{release.tag_name.gsub(/^v/, "")}";),
   }
 
-  mapping.each do |nix_arch, crystal_arch|
-    old_url = nodes["crystal-#{nix_arch}"]["locked"]["url"].as_s
-    new_url = Levenshtein.find(old_url) do |l|
-      release.assets.each do |asset|
-        l.test asset.browser_download_url
+  if repo == "crystal"
+    mapping = [
+      "x86_64-darwin",
+      "x86_64-linux",
+      "i686-linux",
+    ]
+
+    mapping.each do |arch|
+      old_url = nodes["crystal-#{arch}"]["locked"]["url"].as_s
+      new_url = Levenshtein.find(old_url) do |l|
+        release.assets.each do |asset|
+          l.test asset.browser_download_url
+        end
       end
+
+      replacements[old_url] = new_url if new_url
     end
-
-    replacements[old_url] = new_url if new_url
   end
 
   replacements.reject! { |old, new| old == new }
@@ -65,149 +122,15 @@ def update_crystal
 
   if any
     File.write("flake.nix", flake)
-    status = Process.run("nix", args: %w[
-      flake lock
-      --update-input crystal-i686-linux
-      --update-input crystal-x86_64-darwin
-      --update-input crystal-x86_64-linux
-    ])
+    status = Process.run("nix", args: ["flake", "lock", "--update-input", "#{repo}-src"])
     raise "failed to update the flake.lock: #{status.exit_status}" unless status.success?
-  else
-    puts "no replacements done"
   end
+
+  puts "Building .##{repo}"
+  Process.run("nix", args: ["build", ".##{repo}"])
 end
 
-def update_crystalline
-  meta = JSON.parse(`nix flake metadata --json`)
-  nodes = meta["locks"]["nodes"]
-
-  response = HTTP::Client.get("https://api.github.com/repos/elbywan/crystalline/releases/latest")
-  release = Release.from_json(response.body)
-
-  puts "latest crystalline release is #{release.tag_name}"
-
-  old_source = begin
-    o = nodes["crystalline-src"]["original"]
-    "#{o["type"]}:#{o["owner"]}/#{o["repo"]}/#{o["ref"]}"
-  end
-
-  new_source = "github:elbywan/crystalline/#{release.tag_name}"
-
-  replacements = {
-    old_source                      => new_source,
-    /crystallineVersion = "[^"]+";/ => %(crystallineVersion = "#{release.tag_name.gsub(/^v/, "")}";),
-  }
-
-  replacements.reject! { |old, new| old == new }
-
-  flake = File.read("flake.nix")
-
-  any = false
-  replacements.each do |old, new|
-    copy = flake.gsub(old) { new }
-    any = true if copy != flake
-    flake = copy
-  end
-
-  if any
-    File.write("flake.nix", flake)
-    status = Process.run("nix", args: %w[
-      flake lock --update-input crystalline-src
-    ])
-    raise "failed to update the flake.lock: #{status.exit_status}" unless status.success?
-  else
-    puts "no replacements done"
-  end
-end
-
-def update_bdwgc
-  meta = JSON.parse(`nix flake metadata --json`)
-  nodes = meta["locks"]["nodes"]
-
-  response = HTTP::Client.get("https://api.github.com/repos/ivmai/bdwgc/releases")
-  releases = Array(Release).from_json(response.body)
-  release = releases.first
-
-  puts "latest bdwgc release is #{release.tag_name}"
-
-  old_source = begin
-    o = nodes["bdwgc-src"]["original"]
-    "#{o["type"]}:#{o["owner"]}/#{o["repo"]}/#{o["ref"]}"
-  end
-
-  new_source = "github:ivmai/bdwgc/#{release.tag_name}"
-
-  replacements = {
-    old_source                => new_source,
-    /bdwgcVersion = "[^"]+";/ => %(bdwgcVersion = "#{release.tag_name.gsub(/^v/, "")}";),
-  }
-
-  replacements.reject! { |old, new| old == new }
-
-  flake = File.read("flake.nix")
-
-  any = false
-  replacements.each do |old, new|
-    copy = flake.gsub(old) { new }
-    any = true if copy != flake
-    flake = copy
-  end
-
-  if any
-    File.write("flake.nix", flake)
-    status = Process.run("nix", args: %w[
-      flake lock --update-input bdwgc-src
-    ])
-    raise "failed to update the flake.lock: #{status.exit_status}" unless status.success?
-  else
-    puts "no replacements done"
-  end
-end
-
-def update_ameba
-  meta = JSON.parse(`nix flake metadata --json`)
-  nodes = meta["locks"]["nodes"]
-
-  response = HTTP::Client.get("https://api.github.com/repos/crystal-ameba/ameba/releases/latest")
-  release = Release.from_json(response.body)
-
-  puts "latest ameba release is #{release.tag_name}"
-
-  old_source = begin
-    o = nodes["ameba-src"]["original"]
-    "#{o["type"]}:#{o["owner"]}/#{o["repo"]}/#{o["ref"]}"
-  end
-
-  new_source = "github:crystal-ameba/ameba/#{release.tag_name}"
-
-  replacements = {
-    old_source                => new_source,
-    /amebaVersion = "[^"]+";/ => %(amebaVersion = "#{release.tag_name.gsub(/^v/, "")}";),
-  }
-
-  replacements.reject! { |old, new| old == new }
-
-  flake = File.read("flake.nix")
-
-  any = false
-  replacements.each do |old, new|
-    copy = flake.gsub(old) { new }
-    any = true if copy != flake
-    flake = copy
-  end
-
-  if any
-    File.write("flake.nix", flake)
-    status = Process.run("nix", args: %w[
-      flake lock --update-input ameba-src
-    ])
-    raise "failed to update the flake.lock: #{status.exit_status}" unless status.success?
-  else
-    puts "no replacements done"
-  end
-end
-
-update_crystal
-update_crystalline
-update_bdwgc
-update_ameba
+update org: "ivmai", repo: "bdwgc", recency: Recency::Newest
+update org: "crystal-lang", repo: "crystal"
+update org: "crystal-ameba", repo: "ameba"
+update org: "elbywan", repo: "crystalline"

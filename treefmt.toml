@@ -3,5 +3,6 @@ command = "alejandra"
 includes = ["*.nix"]
 
 [formatter.crystal]
-command = "crystal tool format"
+command = "crystal"
+args = ["tool", "format"]
 includes = ["*.cr"]
