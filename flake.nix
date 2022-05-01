@@ -2,7 +2,7 @@
   description = "Flake for Crystal";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
     utils.url = "github:kreisys/flake-utils";
 
     crystal-src = {
@@ -91,6 +91,10 @@
           version = amebaVersion;
           src = inputs.ameba-src;
         };
+
+        treefmt-crystal = final.callPackage ./pkgs/treefmt-crystal {
+          writeShellApplication = prev.writeShellApplication;
+        };
       };
 
       # This actually becomes `legacyPackages`
@@ -100,6 +104,7 @@
         crystal-bin,
         crystalline,
         bdwgc,
+        treefmt-crystal,
       } @ pkgs:
         pkgs
         // {

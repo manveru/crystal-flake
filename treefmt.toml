@@ -3,6 +3,5 @@ command = "alejandra"
 includes = ["*.nix"]
 
 [formatter.crystal]
-command = "crystal"
-args = ["tool", "format"]
+command = "treefmt-crystal"
 includes = ["*.cr"]
