@@ -1,5 +1,22 @@
 {
   "nodes": {
+    "ameba-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1649403172,
+        "narHash": "sha256-t0Whd7py/9QO+CAxXZ34Zc/xBKHYYPuaPq+hedtVjwU=",
+        "owner": "crystal-ameba",
+        "repo": "ameba",
+        "rev": "e9fbfe5048ece2a29196f7f48e2446964eea7ef6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "crystal-ameba",
+        "ref": "v1.0.0",
+        "repo": "ameba",
+        "type": "github"
+      }
+    },
     "bdwgc-src": {
       "flake": false,
       "locked": {
@@ -105,6 +122,7 @@
     },
     "root": {
       "inputs": {
+        "ameba-src": "ameba-src",
         "bdwgc-src": "bdwgc-src",
         "crystal-i686-linux": "crystal-i686-linux",
         "crystal-src": "crystal-src",

@@ -1,6 +1,12 @@
-{ src, version, crystal, fetchFromGitHub, llvmPackages, openssl, bdwgc, lib
-, makeWrapper }:
-
+{
+  src,
+  version,
+  crystal,
+  llvmPackages,
+  openssl,
+  lib,
+  makeWrapper,
+}:
 crystal.buildCrystalPackage rec {
   pname = "crystalline";
   inherit version src;
@@ -24,19 +30,19 @@ crystal.buildCrystalPackage rec {
 
   format = "crystal";
 
-  nativeBuildInputs = [ llvmPackages.llvm openssl makeWrapper ];
+  nativeBuildInputs = [llvmPackages.llvm openssl makeWrapper];
 
   doCheck = false;
   doInstallCheck = false;
 
   crystalBinaries.crystalline = {
     src = "src/crystalline.cr";
-    options = [ "--release" "--no-debug" "--progress" "-Dpreview_mt" ];
+    options = ["--release" "--no-debug" "--progress" "-Dpreview_mt"];
   };
 
   postInstall = ''
     wrapProgram "$out/bin/crystalline" --prefix PATH : '${
-      lib.makeBinPath [ llvmPackages.llvm.dev ]
+      lib.makeBinPath [llvmPackages.llvm.dev]
     }'
   '';
 }

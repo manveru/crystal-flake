@@ -164,6 +164,50 @@ def update_bdwgc
   end
 end
 
+def update_ameba
+  meta = JSON.parse(`nix flake metadata --json`)
+  nodes = meta["locks"]["nodes"]
+
+  response = HTTP::Client.get("https://api.github.com/repos/crystal-ameba/ameba/releases/latest")
+  release = Release.from_json(response.body)
+
+  puts "latest ameba release is #{release.tag_name}"
+
+  old_source = begin
+    o = nodes["ameba-src"]["original"]
+    "#{o["type"]}:#{o["owner"]}/#{o["repo"]}/#{o["ref"]}"
+  end
+
+  new_source = "github:crystal-ameba/ameba/#{release.tag_name}"
+
+  replacements = {
+    old_source                => new_source,
+    /amebaVersion = "[^"]+";/ => %(amebaVersion = "#{release.tag_name.gsub(/^v/, "")}";),
+  }
+
+  replacements.reject! { |old, new| old == new }
+
+  flake = File.read("flake.nix")
+
+  any = false
+  replacements.each do |old, new|
+    copy = flake.gsub(old) { new }
+    any = true if copy != flake
+    flake = copy
+  end
+
+  if any
+    File.write("flake.nix", flake)
+    status = Process.run("nix", args: %w[
+      flake lock --update-input ameba-src
+    ])
+    raise "failed to update the flake.lock: #{status.exit_status}" unless status.success?
+  else
+    puts "no replacements done"
+  end
+end
+
 update_crystal
 update_crystalline
 update_bdwgc
+update_ameba

@@ -1,10 +1,18 @@
-{ stdenv, fetchpatch, autoconf, automake, libtool, src, version }:
+{
+  stdenv,
+  fetchpatch,
+  autoconf,
+  automake,
+  libtool,
+  src,
+  version,
+}:
 stdenv.mkDerivation rec {
   pname = "boehm-gc";
 
   inherit version src;
 
-  nativeBuildInputs = [ automake autoconf libtool ];
+  nativeBuildInputs = [automake autoconf libtool];
 
   preConfigure = "./autogen.sh";
 
