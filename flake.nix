@@ -6,25 +6,25 @@
     utils.url = "github:kreisys/flake-utils";
 
     crystal-src = {
-      url = "github:crystal-lang/crystal/1.3.2";
+      url = "github:crystal-lang/crystal/1.4.1";
       flake = false;
     };
 
     crystal-i686-linux = {
       url =
-        "https://github.com/crystal-lang/crystal/releases/download/1.3.2/crystal-1.3.2-1-linux-x86_64.tar.gz";
+        "https://github.com/crystal-lang/crystal/releases/download/1.4.1/crystal-1.4.1-1-linux-x86_64.tar.gz";
       flake = false;
     };
 
     crystal-x86_64-darwin = {
       url =
-        "https://github.com/crystal-lang/crystal/releases/download/1.3.2/crystal-1.3.2-1-linux-x86_64.tar.gz";
+        "https://github.com/crystal-lang/crystal/releases/download/1.4.1/crystal-1.4.1-1-linux-x86_64.tar.gz";
       flake = false;
     };
 
     crystal-x86_64-linux = {
       url =
-        "https://github.com/crystal-lang/crystal/releases/download/1.3.2/crystal-1.3.2-1-linux-x86_64.tar.gz";
+        "https://github.com/crystal-lang/crystal/releases/download/1.4.1/crystal-1.4.1-1-linux-x86_64.tar.gz";
       flake = false;
     };
 
@@ -34,7 +34,7 @@
     };
 
     crystalline-src = {
-      url = "github:elbywan/crystalline/v0.5.0";
+      url = "github:elbywan/crystalline/v0.6.0";
       flake = false;
     };
   };
@@ -46,8 +46,8 @@
 
       overlay = final: prev:
         let
-          crystalVersion = "1.3.2";
-          crystallineVersion = "0.5.0";
+          crystalVersion = "1.4.1";
+          crystallineVersion = "0.6.0";
           bdwgcVersion = "8.2.0";
           llvmPackages = prev.llvmPackages_11;
         in {
@@ -81,6 +81,7 @@
           };
         };
 
+      # This actually becomes `legacyPackages`
       packages = { crystal, crystal-bin, crystalline, bdwgc }@pkgs:
         pkgs // {
           defaultPackage = crystal;
