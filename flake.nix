@@ -6,22 +6,22 @@
     utils.url = "github:kreisys/flake-utils";
 
     crystal-src = {
-      url = "github:crystal-lang/crystal/1.4.1";
+      url = "github:crystal-lang/crystal/1.5.0";
       flake = false;
     };
 
     crystal-i686-linux = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.4.1/crystal-1.4.1-1-linux-x86_64.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.5.0/crystal-1.5.0-1-linux-x86_64.tar.gz";
       flake = false;
     };
 
     crystal-x86_64-darwin = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.4.1/crystal-1.4.1-1-linux-x86_64.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.5.0/crystal-1.5.0-1-linux-x86_64.tar.gz";
       flake = false;
     };
 
     crystal-x86_64-linux = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.4.1/crystal-1.4.1-1-linux-x86_64.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.5.0/crystal-1.5.0-1-linux-x86_64.tar.gz";
       flake = false;
     };
 
@@ -52,7 +52,7 @@
       name = "crystal";
 
       overlay = final: prev: let
-        crystalVersion = "1.4.1";
+        crystalVersion = "1.5.0";
         crystallineVersion = "0.6.0";
         bdwgcVersion = "8.2.0";
         amebaVersion = "1.0.0";
