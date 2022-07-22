@@ -2,8 +2,11 @@
   description = "Flake for Crystal";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
-    utils.url = "github:kreisys/flake-utils";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
+    utils = {
+      url = "github:kreisys/flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     crystal-src = {
       url = "github:crystal-lang/crystal/1.4.1";
