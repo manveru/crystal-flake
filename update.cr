@@ -9,8 +9,7 @@ require "string_scanner"
 # No support for default, account, or macdef)
 class Netrc
   def self.parse
-    file = File.read(File.expand_path("~/.netrc", home: true))
-    s = StringScanner.new(file)
+    s = StringScanner.new(File.exists?(file) ? File.read(file) : "")
     machines = {} of String => Hash(String, String)
     machine = ""
 
@@ -33,6 +32,10 @@ class Netrc
     end
 
     machines
+  end
+
+  private def self.file
+    File.expand_path("~/.netrc", home: true)
   end
 end
 
@@ -60,7 +63,7 @@ def update(org : String, repo : String, recency = Recency::Latest)
 
   url = URI.parse("https://api.github.com")
   client = HTTP::Client.new(url)
-  client.basic_auth(NETRC[url.host]["login"], NETRC[url.host]["password"])
+  client.basic_auth(NETRC.dig?(url.host.to_s, "login"), NETRC.dig?(url.host.to_s, "password"))
 
   release =
     case recency
@@ -79,11 +82,8 @@ def update(org : String, repo : String, recency = Recency::Latest)
 
   new_source = "github:#{org}/#{repo}/#{release.tag_name}"
 
-  if old_source == new_source
-    return
-  else
-    puts "updating #{old_source} -> #{new_source}"
-  end
+  return if old_source == new_source
+  puts "updating #{old_source} -> #{new_source}"
 
   replacements = {
     old_source                  => new_source,
