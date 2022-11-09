@@ -9,22 +9,22 @@
     };
 
     crystal-src = {
-      url = "github:crystal-lang/crystal/1.6.1";
+      url = "github:crystal-lang/crystal/1.6.2";
       flake = false;
     };
 
     crystal-i686-linux = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.6.1/crystal-1.6.1-1-linux-x86_64.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.6.2/crystal-1.6.2-1-linux-x86_64.tar.gz";
       flake = false;
     };
 
     crystal-x86_64-darwin = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.6.1/crystal-1.6.1-1-linux-x86_64.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.6.2/crystal-1.6.2-1-linux-x86_64.tar.gz";
       flake = false;
     };
 
     crystal-x86_64-linux = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.6.1/crystal-1.6.1-1-linux-x86_64.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.6.2/crystal-1.6.2-1-linux-x86_64.tar.gz";
       flake = false;
     };
 
@@ -39,7 +39,7 @@
     };
 
     ameba-src = {
-      url = "github:crystal-ameba/ameba/v1.2.0";
+      url = "github:crystal-ameba/ameba/v1.3.0";
       flake = false;
     };
   };
@@ -55,10 +55,10 @@
       name = "crystal";
 
       overlay = final: prev: let
-        crystalVersion = "1.6.1";
+        crystalVersion = "1.6.2";
         crystallineVersion = "0.7.0";
         bdwgcVersion = "8.2.2";
-        amebaVersion = "1.2.0";
+        amebaVersion = "1.3.0";
         llvmPackages = prev.llvmPackages_11;
       in {
         bdwgc = prev.callPackage ./pkgs/bdwgc {

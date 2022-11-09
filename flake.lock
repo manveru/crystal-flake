@@ -3,16 +3,16 @@
     "ameba-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1665815617,
-        "narHash": "sha256-NOe0yxkK+EyY4NkVGIj3d8MGAsp11UbgMb+MsXAtB6c=",
+        "lastModified": 1667481713,
+        "narHash": "sha256-hdxL++O3vvmeHMoGpDsN2kkeXK7ObA09Yg7tjHeCaTs=",
         "owner": "crystal-ameba",
         "repo": "ameba",
-        "rev": "cac1ce4138765ee4adfa3ee44dcf8ad1d27b3914",
+        "rev": "35ff16206cd09075aad9a4eefacc1d2e4054ccc6",
         "type": "github"
       },
       "original": {
         "owner": "crystal-ameba",
-        "ref": "v1.2.0",
+        "ref": "v1.3.0",
         "repo": "ameba",
         "type": "github"
       }
@@ -37,28 +37,28 @@
     "crystal-i686-linux": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-gx1aX5kMEDra6kr3cWfAWJBNw+eYbF6LiACgTO3gkwE=",
+        "narHash": "sha256-Hfs70OcJYh+HlGQEftthr1qj10yRCAjzlsqnlUrLdjg=",
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.1/crystal-1.6.1-1-linux-x86_64.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.2/crystal-1.6.2-1-linux-x86_64.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.1/crystal-1.6.1-1-linux-x86_64.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.2/crystal-1.6.2-1-linux-x86_64.tar.gz"
       }
     },
     "crystal-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1666352702,
-        "narHash": "sha256-QfKylnXBLwlCRj2SI1gBEgV24Pz20o4GELhbBHTMMl8=",
+        "lastModified": 1667495929,
+        "narHash": "sha256-WgU6Y8ww1IYyB0vd5tXwmWBEL5RiPjHA7YzPd21jlsY=",
         "owner": "crystal-lang",
         "repo": "crystal",
-        "rev": "fc61bd678afb97a82107e6577516cb27ff9fc1c5",
+        "rev": "879691b2e3268ab290a2a0951bd1d6032f0d90f3",
         "type": "github"
       },
       "original": {
         "owner": "crystal-lang",
-        "ref": "1.6.1",
+        "ref": "1.6.2",
         "repo": "crystal",
         "type": "github"
       }
@@ -66,25 +66,25 @@
     "crystal-x86_64-darwin": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-gx1aX5kMEDra6kr3cWfAWJBNw+eYbF6LiACgTO3gkwE=",
+        "narHash": "sha256-Hfs70OcJYh+HlGQEftthr1qj10yRCAjzlsqnlUrLdjg=",
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.1/crystal-1.6.1-1-linux-x86_64.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.2/crystal-1.6.2-1-linux-x86_64.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.1/crystal-1.6.1-1-linux-x86_64.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.2/crystal-1.6.2-1-linux-x86_64.tar.gz"
       }
     },
     "crystal-x86_64-linux": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-gx1aX5kMEDra6kr3cWfAWJBNw+eYbF6LiACgTO3gkwE=",
+        "narHash": "sha256-Hfs70OcJYh+HlGQEftthr1qj10yRCAjzlsqnlUrLdjg=",
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.1/crystal-1.6.1-1-linux-x86_64.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.2/crystal-1.6.2-1-linux-x86_64.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.1/crystal-1.6.1-1-linux-x86_64.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.2/crystal-1.6.2-1-linux-x86_64.tar.gz"
       }
     },
     "crystalline-src": {
