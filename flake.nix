@@ -3,10 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
-    utils = {
-      url = "github:kreisys/flake-utils";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    flake-parts.url = "github:hercules-ci/flake-parts";
 
     crystal-src = {
       url = "github:crystal-lang/crystal/1.6.2";
@@ -28,6 +25,11 @@
       flake = false;
     };
 
+    crystal-aarch64-darwin = {
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.6.1/crystal-1.6.1-1-darwin-universal.tar.gz";
+      flake = false;
+    };
+
     bdwgc-src = {
       url = "github:ivmai/bdwgc/v8.2.2";
       flake = false;
@@ -39,81 +41,86 @@
     };
 
     ameba-src = {
-      url = "github:crystal-ameba/ameba/v1.3.0";
+      url = "github:crystal-ameba/ameba/v1.3.1";
       flake = false;
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    utils,
-    ...
-  } @ inputs:
-    utils.lib.simpleFlake {
-      inherit nixpkgs;
-      name = "crystal";
+  outputs = {flake-parts, ...} @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [flake-parts.flakeModules.easyOverlay];
 
-      overlay = final: prev: let
-        crystalVersion = "1.6.2";
-        crystallineVersion = "0.7.0";
-        bdwgcVersion = "8.2.2";
-        amebaVersion = "1.3.0";
-        llvmPackages = prev.llvmPackages_11;
-      in {
-        bdwgc = prev.callPackage ./pkgs/bdwgc {
-          src = inputs.bdwgc-src;
-          version = bdwgcVersion;
+      systems = ["aarch64-darwin" "i686-linux" "x86_64-darwin" "x86_64-linux"];
+
+      perSystem = {
+        final,
+        pkgs,
+        ...
+      }: {
+        overlayAttrs = let
+          crystalVersion = "1.6.2";
+          crystallineVersion = "0.7.0";
+          bdwgcVersion = "8.2.2";
+          amebaVersion = "1.3.1";
+          llvmPackages = pkgs.llvmPackages_11;
+        in {
+          bdwgc = pkgs.callPackage ./pkgs/bdwgc {
+            src = inputs.bdwgc-src;
+            version = bdwgcVersion;
+          };
+
+          crystal-bin = pkgs.callPackage ./pkgs/crystal/package-bin.nix {
+            version = crystalVersion;
+            src = inputs."crystal-${pkgs.system}";
+          };
+
+          crystal = final.callPackage ./pkgs/crystal {
+            inherit llvmPackages;
+            version = crystalVersion;
+            src = inputs.crystal-src;
+          };
+
+          crystal-specs = final.callPackage ./pkgs/crystal {
+            inherit llvmPackages;
+            version = crystalVersion;
+            src = inputs.crystal-src;
+            doCheck = true;
+          };
+
+          crystalline = final.callPackage ./pkgs/crystalline {
+            inherit llvmPackages;
+            version = crystallineVersion;
+            src = inputs.crystalline-src;
+          };
+
+          ameba = final.callPackage ./pkgs/ameba {
+            version = amebaVersion;
+            src = inputs.ameba-src;
+          };
+
+          treefmt-crystal = final.callPackage ./pkgs/treefmt-crystal {
+            writeShellApplication = pkgs.writeShellApplication;
+          };
         };
 
-        crystal-bin = prev.callPackage ./pkgs/crystal/package-bin.nix {
-          version = crystalVersion;
-          src = inputs."crystal-${prev.system}";
+        packages = {
+          inherit (final) ameba crystal crystal-bin crystalline bdwgc treefmt-crystal;
+          defaultPackage = final.crystal;
+          default = final.crystal;
         };
 
-        crystal = final.callPackage ./pkgs/crystal {
-          inherit llvmPackages;
-          version = crystalVersion;
-          src = inputs.crystal-src;
-        };
-
-        crystal-specs = final.callPackage ./pkgs/crystal {
-          inherit llvmPackages;
-          version = crystalVersion;
-          src = inputs.crystal-src;
-          doCheck = true;
-        };
-
-        crystalline = final.callPackage ./pkgs/crystalline {
-          inherit llvmPackages;
-          version = crystallineVersion;
-          src = inputs.crystalline-src;
-        };
-
-        ameba = final.callPackage ./pkgs/ameba {
-          version = amebaVersion;
-          src = inputs.ameba-src;
-        };
-
-        treefmt-crystal = final.callPackage ./pkgs/treefmt-crystal {
-          writeShellApplication = prev.writeShellApplication;
+        devShells.default = pkgs.mkShell {
+          nativeBuildInputs = [
+            final.crystal
+            pkgs.pkg-config
+            pkgs.openssl
+            pkgs.zlib
+            pkgs.pcre
+            pkgs.libevent
+            pkgs.treefmt
+            final.treefmt-crystal
+          ];
         };
       };
-
-      # This actually becomes `legacyPackages`
-      packages = {
-        ameba,
-        crystal,
-        crystal-bin,
-        crystalline,
-        bdwgc,
-        treefmt-crystal,
-      } @ pkgs:
-        pkgs
-        // {
-          defaultPackage = crystal;
-        };
-
-      shell = ./shell.nix;
     };
 }

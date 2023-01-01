@@ -34,6 +34,18 @@
         "type": "github"
       }
     },
+    "crystal-aarch64-darwin": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-d5znjl8QaQ/dMNa4GtKS/K14PwjBgt8Md6AwSCKcyl4=",
+        "type": "tarball",
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.1/crystal-1.6.1-1-darwin-universal.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.1/crystal-1.6.1-1-darwin-universal.tar.gz"
+      }
+    },
     "crystal-i686-linux": {
       "flake": false,
       "locked": {
@@ -104,6 +116,24 @@
         "type": "github"
       }
     },
+    "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib"
+      },
+      "locked": {
+        "lastModified": 1672152762,
+        "narHash": "sha256-U8iWWHgabN07zfbgedogMVWrEP1Zywyf3Yx3OYHSSgE=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "19e0f88324d90509141e192664ded98bb88ef9b2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1658406394,
@@ -120,37 +150,36 @@
         "type": "github"
       }
     },
+    "nixpkgs-lib": {
+      "locked": {
+        "dir": "lib",
+        "lastModified": 1671359686,
+        "narHash": "sha256-3MpC6yZo+Xn9cPordGz2/ii6IJpP2n8LE8e/ebUXLrs=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "04f574a1c0fde90b51bf68198e2297ca4e7cccf4",
+        "type": "github"
+      },
+      "original": {
+        "dir": "lib",
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "ameba-src": "ameba-src",
         "bdwgc-src": "bdwgc-src",
+        "crystal-aarch64-darwin": "crystal-aarch64-darwin",
         "crystal-i686-linux": "crystal-i686-linux",
         "crystal-src": "crystal-src",
         "crystal-x86_64-darwin": "crystal-x86_64-darwin",
         "crystal-x86_64-linux": "crystal-x86_64-linux",
         "crystalline-src": "crystalline-src",
-        "nixpkgs": "nixpkgs",
-        "utils": "utils"
-      }
-    },
-    "utils": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1644616305,
-        "narHash": "sha256-yxr3yyDa5NqIuXPWLIS91BLJCCJkzeCzNzOUqpnwAaU=",
-        "owner": "kreisys",
-        "repo": "flake-utils",
-        "rev": "1c76d00ac669224a92079fe10086133a6922adee",
-        "type": "github"
-      },
-      "original": {
-        "owner": "kreisys",
-        "repo": "flake-utils",
-        "type": "github"
+        "flake-parts": "flake-parts",
+        "nixpkgs": "nixpkgs"
       }
     }
   },

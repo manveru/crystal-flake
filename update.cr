@@ -95,6 +95,7 @@ def update(org : String, repo : String, recency = Recency::Latest)
       "x86_64-darwin",
       "x86_64-linux",
       "i686-linux",
+      "aarch64-darwin",
     ]
 
     mapping.each do |arch|
