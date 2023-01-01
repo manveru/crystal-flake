@@ -3,16 +3,16 @@
     "ameba-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1667481713,
-        "narHash": "sha256-hdxL++O3vvmeHMoGpDsN2kkeXK7ObA09Yg7tjHeCaTs=",
+        "lastModified": 1668496515,
+        "narHash": "sha256-SZ2sBQeZgtPOYioH9eK5MveFtWVGPvgKMrqsCfjoRGM=",
         "owner": "crystal-ameba",
         "repo": "ameba",
-        "rev": "35ff16206cd09075aad9a4eefacc1d2e4054ccc6",
+        "rev": "cc687d028180203cb53390484871ffb8669b88c8",
         "type": "github"
       },
       "original": {
         "owner": "crystal-ameba",
-        "ref": "v1.3.0",
+        "ref": "v1.3.1",
         "repo": "ameba",
         "type": "github"
       }
