@@ -118,6 +118,7 @@
             pkgs.pcre
             pkgs.libevent
             pkgs.treefmt
+            pkgs.crystal2nix
             final.treefmt-crystal
           ];
         };
