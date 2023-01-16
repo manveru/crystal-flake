@@ -37,40 +37,40 @@
     "crystal-aarch64-darwin": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-d5znjl8QaQ/dMNa4GtKS/K14PwjBgt8Md6AwSCKcyl4=",
+        "narHash": "sha256-P8tcXB+aTHHMLigrqrSpvTsC5t1q4AFxPyLLTsSD7/I=",
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.1/crystal-1.6.1-1-darwin-universal.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.7.0/crystal-1.7.0-1-darwin-universal.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.1/crystal-1.6.1-1-darwin-universal.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.7.0/crystal-1.7.0-1-darwin-universal.tar.gz"
       }
     },
     "crystal-i686-linux": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-Hfs70OcJYh+HlGQEftthr1qj10yRCAjzlsqnlUrLdjg=",
+        "narHash": "sha256-3s1KKV3UuMZfUqULWCWl6XKrHOVufnfcgEOJ0d5jnLQ=",
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.2/crystal-1.6.2-1-linux-x86_64.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.7.0/crystal-1.7.0-1-linux-x86_64.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.2/crystal-1.6.2-1-linux-x86_64.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.7.0/crystal-1.7.0-1-linux-x86_64.tar.gz"
       }
     },
     "crystal-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1667495929,
-        "narHash": "sha256-WgU6Y8ww1IYyB0vd5tXwmWBEL5RiPjHA7YzPd21jlsY=",
+        "lastModified": 1673282978,
+        "narHash": "sha256-no6b6PGmc/dhicMLVZIHwi/HOKCVTiWHZ5I+ImBjoQc=",
         "owner": "crystal-lang",
         "repo": "crystal",
-        "rev": "879691b2e3268ab290a2a0951bd1d6032f0d90f3",
+        "rev": "016578f858cd08efc035a9c66a82965efc75321c",
         "type": "github"
       },
       "original": {
         "owner": "crystal-lang",
-        "ref": "1.6.2",
+        "ref": "1.7.0",
         "repo": "crystal",
         "type": "github"
       }
@@ -78,40 +78,40 @@
     "crystal-x86_64-darwin": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-Hfs70OcJYh+HlGQEftthr1qj10yRCAjzlsqnlUrLdjg=",
+        "narHash": "sha256-3s1KKV3UuMZfUqULWCWl6XKrHOVufnfcgEOJ0d5jnLQ=",
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.2/crystal-1.6.2-1-linux-x86_64.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.7.0/crystal-1.7.0-1-linux-x86_64.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.2/crystal-1.6.2-1-linux-x86_64.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.7.0/crystal-1.7.0-1-linux-x86_64.tar.gz"
       }
     },
     "crystal-x86_64-linux": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-Hfs70OcJYh+HlGQEftthr1qj10yRCAjzlsqnlUrLdjg=",
+        "narHash": "sha256-3s1KKV3UuMZfUqULWCWl6XKrHOVufnfcgEOJ0d5jnLQ=",
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.2/crystal-1.6.2-1-linux-x86_64.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.7.0/crystal-1.7.0-1-linux-x86_64.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.6.2/crystal-1.6.2-1-linux-x86_64.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.7.0/crystal-1.7.0-1-linux-x86_64.tar.gz"
       }
     },
     "crystalline-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1665222943,
-        "narHash": "sha256-j/rQf+qn5ZjZhq3wG4WEKzG3YwRcnUEb4y36qXpiW7Q=",
+        "lastModified": 1673543445,
+        "narHash": "sha256-oNi2PXjrQbaUsTpV33jdACO0khPCaoq0FVN1tMZgwME=",
         "owner": "elbywan",
         "repo": "crystalline",
-        "rev": "41665a798659459ecd6e2cb1169d7faf1783e746",
+        "rev": "c6a825edeb81bd6c3e433b083f52837958102888",
         "type": "github"
       },
       "original": {
         "owner": "elbywan",
-        "ref": "v0.7.0",
+        "ref": "v0.8.0",
         "repo": "crystalline",
         "type": "github"
       }
