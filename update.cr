@@ -1,5 +1,6 @@
 #!/usr/bin/env crystal
 
+require "file_utils"
 require "json"
 require "http/client"
 require "levenshtein"
@@ -125,6 +126,18 @@ def update(org : String, repo : String, recency = Recency::Latest)
     File.write("flake.nix", flake)
     status = Process.run("nix", args: ["flake", "lock", "--update-input", "#{repo}-src"])
     raise "failed to update the flake.lock: #{status.exit_status}" unless status.success?
+  end
+
+  pkg_dir = Path.new(Dir.current, "pkgs", repo)
+
+  if File.exists? pkg_dir.join("shards.nix")
+    Dir.cd Dir.tempdir do
+      Process.run("git", args: ["clone", "git@github.com:#{org}/#{repo}.git", "-b", release.tag_name])
+      Dir.cd repo do
+        Process.run("crystal2nix")
+        FileUtils.cp Path.new(Dir.tempdir, repo, "shards.nix"), pkg_dir
+      end
+    end
   end
 
   puts "Building .##{repo}"
