@@ -6,27 +6,27 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     crystal-src = {
-      url = "github:crystal-lang/crystal/1.7.0";
+      url = "github:crystal-lang/crystal/1.7.2";
       flake = false;
     };
 
     crystal-i686-linux = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.7.0/crystal-1.7.0-1-linux-x86_64.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.7.2/crystal-1.7.2-1-linux-x86_64.tar.gz";
       flake = false;
     };
 
     crystal-x86_64-darwin = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.7.0/crystal-1.7.0-1-linux-x86_64.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.7.2/crystal-1.7.2-1-linux-x86_64.tar.gz";
       flake = false;
     };
 
     crystal-x86_64-linux = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.7.0/crystal-1.7.0-1-linux-x86_64.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.7.2/crystal-1.7.2-1-linux-x86_64.tar.gz";
       flake = false;
     };
 
     crystal-aarch64-darwin = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.7.0/crystal-1.7.0-1-darwin-universal.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.7.2/crystal-1.7.2-1-darwin-universal.tar.gz";
       flake = false;
     };
 
@@ -41,7 +41,7 @@
     };
 
     ameba-src = {
-      url = "github:crystal-ameba/ameba/v1.3.1";
+      url = "github:crystal-ameba/ameba/v1.4.2";
       flake = false;
     };
   };
@@ -58,10 +58,10 @@
         ...
       }: {
         overlayAttrs = let
-          crystalVersion = "1.7.0";
+          crystalVersion = "1.7.2";
           crystallineVersion = "0.8.0";
           bdwgcVersion = "8.2.2";
-          amebaVersion = "1.3.1";
+          amebaVersion = "1.4.2";
           llvmPackages = pkgs.llvmPackages_11;
         in {
           bdwgc = pkgs.callPackage ./pkgs/bdwgc {
