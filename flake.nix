@@ -2,7 +2,7 @@
   description = "Flake for Crystal";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     crystal-src = {
