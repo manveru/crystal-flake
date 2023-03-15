@@ -59,6 +59,7 @@ end
 NETRC = Netrc.parse
 
 def update(org : String, repo : String, recency = Recency::Latest)
+  puts "Processing #{repo}"
   meta = JSON.parse(`nix flake metadata --json`)
   nodes = meta["locks"]["nodes"]
 
@@ -132,7 +133,7 @@ def update(org : String, repo : String, recency = Recency::Latest)
 
   if File.exists? pkg_dir.join("shards.nix")
     Dir.cd Dir.tempdir do
-      Process.run("git", args: ["clone", "git@github.com:#{org}/#{repo}.git", "-b", release.tag_name])
+      Process.run("git", args: ["clone", "git@github.com:#{org}/#{repo}.git", "--branch", release.tag_name, "--depth", "1"])
       Dir.cd repo do
         Process.run("crystal2nix")
         FileUtils.cp Path.new(Dir.tempdir, repo, "shards.nix"), pkg_dir
