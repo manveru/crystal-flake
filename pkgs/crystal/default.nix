@@ -1,5 +1,6 @@
 {
   lib,
+  stdenv,
   llvmPackages,
   clang11Stdenv,
   llvm_11,
@@ -18,6 +19,7 @@
   libyaml,
   gmp,
   pcre,
+  libiconv,
   hostname,
   coreutils,
   callPackage,
@@ -38,9 +40,9 @@ lib.fix (compiler:
 
       nativeBuildInputs = [makeWrapper removeReferencesTo llvm_11 pkg-config crystal-bin];
 
-      buildInputs = [bdwgc gmp libevent libxml2 libyaml openssl pcre readline zlib];
+      buildInputs = [bdwgc gmp libevent libxml2 libyaml openssl pcre readline zlib] ++ lib.optionals stdenv.isDarwin [ libiconv ];
 
-      checkInputs = [which git gmp openssl readline libxml2 libyaml];
+      checkInputs = [which git gmp openssl readline libxml2 libyaml] ++ lib.optionals stdenv.isDarwin [ libiconv ];
 
       disallowedReferences = [crystal-bin];
 
