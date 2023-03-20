@@ -16,7 +16,7 @@
     };
 
     crystal-x86_64-darwin = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.7.3/crystal-1.7.3-1-linux-x86_64.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.7.3/crystal-1.7.3-1-darwin-universal.tar.gz";
       flake = false;
     };
 
