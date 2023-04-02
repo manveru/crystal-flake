@@ -56,6 +56,7 @@ lib.fix (compiler:
 
       LLVM_CONFIG = "${llvm_11.dev}/bin/llvm-config";
       CRYSTAL_LIBRARY_PATH = "${placeholder "lib"}/crystal";
+      CRYSTAL_CONFIG_TARGET = stdenv.targetPlatform.config;
       FLAGS = ["--threads=\${NIX_BUILD_CORES}"];
 
       postPatch = ''
