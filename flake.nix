@@ -6,27 +6,27 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     crystal-src = {
-      url = "github:crystal-lang/crystal/1.7.3";
+      url = "github:crystal-lang/crystal/1.8.1";
       flake = false;
     };
 
     crystal-i686-linux = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.7.3/crystal-1.7.3-1-linux-x86_64.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.8.1/crystal-1.8.1-1-linux-x86_64.tar.gz";
       flake = false;
     };
 
     crystal-x86_64-darwin = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.7.3/crystal-1.7.3-1-darwin-universal.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.8.1/crystal-1.8.1-1-darwin-universal.tar.gz";
       flake = false;
     };
 
     crystal-x86_64-linux = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.7.3/crystal-1.7.3-1-linux-x86_64.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.8.1/crystal-1.8.1-1-linux-x86_64.tar.gz";
       flake = false;
     };
 
     crystal-aarch64-darwin = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.7.3/crystal-1.7.3-1-darwin-universal.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.8.1/crystal-1.8.1-1-darwin-universal.tar.gz";
       flake = false;
     };
 
@@ -36,12 +36,12 @@
     };
 
     crystalline-src = {
-      url = "github:elbywan/crystalline/v0.8.0";
+      url = "github:elbywan/crystalline/v0.9.0";
       flake = false;
     };
 
     ameba-src = {
-      url = "github:crystal-ameba/ameba/v1.4.2";
+      url = "github:crystal-ameba/ameba/v1.4.3";
       flake = false;
     };
   };
@@ -58,10 +58,10 @@
         ...
       }: {
         overlayAttrs = let
-          crystalVersion = "1.7.3";
-          crystallineVersion = "0.8.0";
+          crystalVersion = "1.8.1";
+          crystallineVersion = "0.9.0";
           bdwgcVersion = "8.2.2";
-          amebaVersion = "1.4.2";
+          amebaVersion = "1.4.3";
           llvmPackages = pkgs.llvmPackages_11;
         in {
           bdwgc = pkgs.callPackage ./pkgs/bdwgc {

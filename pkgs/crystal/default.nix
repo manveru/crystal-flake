@@ -18,7 +18,7 @@
   zlib,
   libyaml,
   gmp,
-  pcre,
+  pcre2,
   libiconv,
   hostname,
   coreutils,
@@ -40,7 +40,7 @@ lib.fix (compiler:
 
       nativeBuildInputs = [makeWrapper removeReferencesTo llvm_11 pkg-config crystal-bin];
 
-      buildInputs = [bdwgc gmp libevent libxml2 libyaml openssl pcre readline zlib] ++ lib.optionals stdenv.isDarwin [ libiconv ];
+      buildInputs = [bdwgc gmp libevent libxml2 libyaml openssl pcre2 readline zlib] ++ lib.optionals stdenv.isDarwin [ libiconv ];
 
       checkInputs = [which git gmp openssl readline libxml2 libyaml] ++ lib.optionals stdenv.isDarwin [ libiconv ];
 
@@ -68,17 +68,11 @@ lib.fix (compiler:
         substituteInPlace src/crystal/system/unix/time.cr \
           --replace /usr/share/zoneinfo/ ${tzdata}/share/zoneinfo/
 
-        substituteInPlace spec/std/file_spec.cr \
-          --replace '/bin/ls' '${coreutils}/bin/ls' \
-          --replace '/usr/share' '/tmp/crystal' \
-          --replace '/usr' '/tmp'
-
         substituteInPlace spec/std/process_spec.cr \
           --replace '/bin/cat' '${coreutils}/bin/cat' \
           --replace '/bin/ls' '${coreutils}/bin/ls' \
           --replace '/usr/bin/env' '${coreutils}/bin/env' \
-          --replace '"env"' '"${coreutils}/bin/env"' \
-          --replace '"/usr"' '"/tmp"'
+          --replace '"env"' '"${coreutils}/bin/env"'
 
         substituteInPlace spec/std/system_spec.cr \
           --replace '`hostname`' '`${hostname}/bin/hostname`'
@@ -88,12 +82,6 @@ lib.fix (compiler:
           --replace \
           'it "joins and transmits to multicast groups"' \
           'pending "joins and transmits to multicast groups"'
-
-        # See https://github.com/crystal-lang/crystal/pull/8699
-        substituteInPlace spec/std/xml/xml_spec.cr \
-          --replace \
-          'it "handles errors"' \
-          'pending "handles errors"'
 
         ln -sf spec/compiler spec/std
 
