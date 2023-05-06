@@ -96,7 +96,6 @@ def update(org : String, repo : String, recency = Recency::Latest)
     mapping = [
       "x86_64-darwin",
       "x86_64-linux",
-      "i686-linux",
       "aarch64-darwin",
     ]
 

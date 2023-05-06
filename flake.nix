@@ -10,11 +10,6 @@
       flake = false;
     };
 
-    crystal-i686-linux = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.8.1/crystal-1.8.1-1-linux-x86_64.tar.gz";
-      flake = false;
-    };
-
     crystal-x86_64-darwin = {
       url = "https://github.com/crystal-lang/crystal/releases/download/1.8.1/crystal-1.8.1-1-darwin-universal.tar.gz";
       flake = false;
@@ -50,7 +45,7 @@
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [flake-parts.flakeModules.easyOverlay];
 
-      systems = ["aarch64-darwin" "i686-linux" "x86_64-darwin" "x86_64-linux"];
+      systems = ["aarch64-darwin" "x86_64-darwin" "x86_64-linux"];
 
       perSystem = {
         final,

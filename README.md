@@ -56,8 +56,8 @@ version.
 
 ## Note
 
-The `i686` and `darwin` versions aren't tested, since I only have an
-`x86_64-linux` machine, but in theory the `crystal-bin` packages should work as
-well as the official release.
+The `darwin` version isn't tested, since I only have an `x86_64-linux` machine,
+but in theory the `crystal-bin` packages should work as well as the official
+release.
 
 
