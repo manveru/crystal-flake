@@ -6,37 +6,37 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     crystal-src = {
-      url = "github:crystal-lang/crystal/1.10.1";
+      url = "github:crystal-lang/crystal/1.13.0";
       flake = false;
     };
 
     crystal-x86_64-darwin = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.10.1/crystal-1.10.1-1-darwin-universal.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.13.0/crystal-1.13.0-1-darwin-universal.tar.gz";
       flake = false;
     };
 
     crystal-x86_64-linux = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.10.1/crystal-1.10.1-1-linux-x86_64.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.13.0/crystal-1.13.0-1-linux-x86_64.tar.gz";
       flake = false;
     };
 
     crystal-aarch64-darwin = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.10.1/crystal-1.10.1-1-darwin-universal.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.13.0/crystal-1.13.0-1-darwin-universal.tar.gz";
       flake = false;
     };
 
     bdwgc-src = {
-      url = "github:ivmai/bdwgc/v8.2.4";
+      url = "github:ivmai/bdwgc/v8.2.6";
       flake = false;
     };
 
     crystalline-src = {
-      url = "github:elbywan/crystalline/v0.11.0";
+      url = "github:elbywan/crystalline/v0.13.1";
       flake = false;
     };
 
     ameba-src = {
-      url = "github:crystal-ameba/ameba/v1.5.0";
+      url = "github:crystal-ameba/ameba/v1.6.1";
       flake = false;
     };
   };
@@ -53,10 +53,10 @@
         ...
       }: {
         overlayAttrs = let
-          crystalVersion = "1.10.1";
-          crystallineVersion = "0.11.0";
-          bdwgcVersion = "8.2.4";
-          amebaVersion = "1.5.0";
+          crystalVersion = "1.13.0";
+          crystallineVersion = "0.13.1";
+          bdwgcVersion = "8.2.6";
+          amebaVersion = "1.6.1";
           llvmPackages = pkgs.llvmPackages_11;
         in {
           bdwgc = pkgs.callPackage ./pkgs/bdwgc {

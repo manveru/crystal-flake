@@ -3,16 +3,16 @@
     "ameba-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1690573222,
-        "narHash": "sha256-TdyEnTloaciSpkPmnm+OM75sz9jaCaQ3VoDEepfescU=",
+        "lastModified": 1704831139,
+        "narHash": "sha256-NwmsNz9YfHDk0hVwVb5zczuzvErrwPhd3rs75t/Fj+I=",
         "owner": "crystal-ameba",
         "repo": "ameba",
-        "rev": "7b8316f0616ef140cd29b7bf9d7e242009f80d1c",
+        "rev": "b6bd74e02fd839d65e9811cb914cc4cdc46a5431",
         "type": "github"
       },
       "original": {
         "owner": "crystal-ameba",
-        "ref": "v1.5.0",
+        "ref": "v1.6.1",
         "repo": "ameba",
         "type": "github"
       }
@@ -20,16 +20,16 @@
     "bdwgc-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1685120683,
-        "narHash": "sha256-KHijT4BBKfDvTpHpwognN+3ZXoC6JabBTFSYFyOUT9o=",
+        "lastModified": 1707031230,
+        "narHash": "sha256-y6hU5qU4qO9VvQvKNH9dvReCrf3+Ih2HHbF6IS1V3WQ=",
         "owner": "ivmai",
         "repo": "bdwgc",
-        "rev": "d1ff06cc503a74dca0150d5e988f2c93158b0cdf",
+        "rev": "e340b2e869e02718de9c9d7fa440ef4b35785388",
         "type": "github"
       },
       "original": {
         "owner": "ivmai",
-        "ref": "v8.2.4",
+        "ref": "v8.2.6",
         "repo": "bdwgc",
         "type": "github"
       }
@@ -37,29 +37,29 @@
     "crystal-aarch64-darwin": {
       "flake": false,
       "locked": {
-        "lastModified": 1697184042,
-        "narHash": "sha256-zHvZo/t13QsKTJOOp6v6ZNw7cwjKZ29TajRNC3vUaCI=",
+        "lastModified": 1720555666,
+        "narHash": "sha256-98JsGh1m7WDZ6hM/dzWr/TlqqHv+pCEC+qWR0QkHNco=",
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.10.1/crystal-1.10.1-1-darwin-universal.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.13.0/crystal-1.13.0-1-darwin-universal.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.10.1/crystal-1.10.1-1-darwin-universal.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.13.0/crystal-1.13.0-1-darwin-universal.tar.gz"
       }
     },
     "crystal-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1697181881,
-        "narHash": "sha256-+ytVFf0t6ZDcJ+bQaDC012/YlOTpo7G6WGBMGlRltt4=",
+        "lastModified": 1720554583,
+        "narHash": "sha256-LgR4aw2A/IqR6MraHvXmzn9NwtmuQ/bfUiQvs+h2VjQ=",
         "owner": "crystal-lang",
         "repo": "crystal",
-        "rev": "c6f3552f5be159eb06c8f348c6b9e23ff7f17dbc",
+        "rev": "6831e441f1353455f53360820d6cafd5b8bbee35",
         "type": "github"
       },
       "original": {
         "owner": "crystal-lang",
-        "ref": "1.10.1",
+        "ref": "1.13.0",
         "repo": "crystal",
         "type": "github"
       }
@@ -67,42 +67,42 @@
     "crystal-x86_64-darwin": {
       "flake": false,
       "locked": {
-        "lastModified": 1697184042,
-        "narHash": "sha256-zHvZo/t13QsKTJOOp6v6ZNw7cwjKZ29TajRNC3vUaCI=",
+        "lastModified": 1720555666,
+        "narHash": "sha256-98JsGh1m7WDZ6hM/dzWr/TlqqHv+pCEC+qWR0QkHNco=",
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.10.1/crystal-1.10.1-1-darwin-universal.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.13.0/crystal-1.13.0-1-darwin-universal.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.10.1/crystal-1.10.1-1-darwin-universal.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.13.0/crystal-1.13.0-1-darwin-universal.tar.gz"
       }
     },
     "crystal-x86_64-linux": {
       "flake": false,
       "locked": {
-        "lastModified": 1697182606,
-        "narHash": "sha256-QhWySbDISW3GNcNXpTJN7tucbW5sTTeo0r2D/T7VHwo=",
+        "lastModified": 1720555417,
+        "narHash": "sha256-eJgr/aSL6uzu06Ce778cLNJ7WjZ22rJwIeiKFBr2F4M=",
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.10.1/crystal-1.10.1-1-linux-x86_64.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.13.0/crystal-1.13.0-1-linux-x86_64.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.10.1/crystal-1.10.1-1-linux-x86_64.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.13.0/crystal-1.13.0-1-linux-x86_64.tar.gz"
       }
     },
     "crystalline-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1696955782,
-        "narHash": "sha256-EMRq8FqVhzdrlH/HPlJnE3DhjdEIsdxFV69jA1VvTpk=",
+        "lastModified": 1715666181,
+        "narHash": "sha256-Exv83jmSyhJv90Oo4oApZwNgNjy7tOKxLNh7yJIbfws=",
         "owner": "elbywan",
         "repo": "crystalline",
-        "rev": "48f4b48658ba9268db8b2d56d402ce659d019e54",
+        "rev": "7bd95d95144676e1ffc358673831c44bf2c93660",
         "type": "github"
       },
       "original": {
         "owner": "elbywan",
-        "ref": "v0.11.0",
+        "ref": "v0.13.1",
         "repo": "crystalline",
         "type": "github"
       }
