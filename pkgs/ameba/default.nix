@@ -3,9 +3,9 @@
   version,
   crystal,
   shards,
-  fetchFromGitHub,
+  coreutils,
 }:
-crystal.buildCrystalPackage rec {
+crystal.buildCrystalPackage {
   pname = "ameba";
   inherit version src;
 
@@ -13,6 +13,8 @@ crystal.buildCrystalPackage rec {
     mkdir -p lib
     ln -s $src lib/ameba
   '';
+
+  INSTALL_BIN = "${coreutils}/bin/install";
 
   buildInputs = [shards];
 

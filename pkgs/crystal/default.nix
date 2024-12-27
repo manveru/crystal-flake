@@ -2,8 +2,8 @@
   lib,
   stdenv,
   llvmPackages,
-  clang11Stdenv,
-  llvm_11,
+  clangStdenv,
+  llvm,
   removeReferencesTo,
   makeWrapper,
   tzdata,
@@ -30,7 +30,7 @@
   doCheck ? false,
 }:
 lib.fix (compiler:
-    clang11Stdenv.mkDerivation rec {
+    clangStdenv.mkDerivation rec {
       pname = "crystal";
       inherit version src;
 
@@ -39,11 +39,11 @@ lib.fix (compiler:
           callPackage ./build-crystal-package.nix {crystal = compiler;};
       };
 
-      nativeBuildInputs = [makeWrapper removeReferencesTo llvm_11 pkg-config crystal-bin];
+      nativeBuildInputs = [makeWrapper removeReferencesTo llvm pkg-config crystal-bin];
 
-      buildInputs = [bdwgc gmp libevent libxml2 libyaml openssl pcre2 readline zlib libffi] ++ lib.optionals stdenv.isDarwin [ libiconv ];
+      buildInputs = [bdwgc gmp libevent libxml2 libyaml openssl pcre2 readline zlib libffi] ++ lib.optionals stdenv.isDarwin [libiconv];
 
-      checkInputs = [which git gmp openssl readline libxml2 libyaml] ++ lib.optionals stdenv.isDarwin [ libiconv ];
+      checkInputs = [which git gmp openssl readline libxml2 libyaml] ++ lib.optionals stdenv.isDarwin [libiconv];
 
       disallowedReferences = [crystal-bin];
 
@@ -55,7 +55,7 @@ lib.fix (compiler:
 
       buildFlags = ["all" "docs" "interpreter=1" "release=1"];
 
-      LLVM_CONFIG = "${llvm_11.dev}/bin/llvm-config";
+      LLVM_CONFIG = "${llvm.dev}/bin/llvm-config";
       CRYSTAL_LIBRARY_PATH = "${placeholder "lib"}/crystal";
       CRYSTAL_CONFIG_TARGET = stdenv.targetPlatform.config;
       FLAGS = ["--threads=\${NIX_BUILD_CORES}"];
@@ -125,7 +125,7 @@ lib.fix (compiler:
           lib.makeBinPath [pkg-config llvmPackages.clang which]
         } \
           --suffix CRYSTAL_PATH : lib:$lib/crystal \
-          --suffix LLVM_CONFIG : "${llvm_11.dev}/bin/llvm-config" \
+          --suffix LLVM_CONFIG : "${llvm.dev}/bin/llvm-config" \
           --suffix PKG_CONFIG_PATH : ${
           lib.makeSearchPathOutput "dev" "lib/pkgconfig" buildInputs
         } \

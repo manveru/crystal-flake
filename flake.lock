@@ -3,16 +3,16 @@
     "ameba-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1704831139,
-        "narHash": "sha256-NwmsNz9YfHDk0hVwVb5zczuzvErrwPhd3rs75t/Fj+I=",
+        "lastModified": 1732565739,
+        "narHash": "sha256-2gEwgXjB6zcJQAdUGQfZFe8WcqT5fyb8Qbxk0qwn+c8=",
         "owner": "crystal-ameba",
         "repo": "ameba",
-        "rev": "b6bd74e02fd839d65e9811cb914cc4cdc46a5431",
+        "rev": "a21dea0b44642f4fc87429283f8b0dd9f1e47a9f",
         "type": "github"
       },
       "original": {
         "owner": "crystal-ameba",
-        "ref": "v1.6.1",
+        "ref": "v1.6.4",
         "repo": "ameba",
         "type": "github"
       }
@@ -20,16 +20,16 @@
     "bdwgc-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1707031230,
-        "narHash": "sha256-y6hU5qU4qO9VvQvKNH9dvReCrf3+Ih2HHbF6IS1V3WQ=",
+        "lastModified": 1725824871,
+        "narHash": "sha256-UQSLK/05uPal6/m+HMz0QwXVII1leonlmtSZsXjJ+/c=",
         "owner": "ivmai",
         "repo": "bdwgc",
-        "rev": "e340b2e869e02718de9c9d7fa440ef4b35785388",
+        "rev": "ee59af3722e56de8404de6cd0c21c2493cc4d855",
         "type": "github"
       },
       "original": {
         "owner": "ivmai",
-        "ref": "v8.2.6",
+        "ref": "v8.2.8",
         "repo": "bdwgc",
         "type": "github"
       }
@@ -37,29 +37,29 @@
     "crystal-aarch64-darwin": {
       "flake": false,
       "locked": {
-        "lastModified": 1720555666,
-        "narHash": "sha256-98JsGh1m7WDZ6hM/dzWr/TlqqHv+pCEC+qWR0QkHNco=",
+        "lastModified": 1728476979,
+        "narHash": "sha256-nL/cXIYjLPQY0fAo4FmuejbUh67XuSU2mZET+WwdtyY=",
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.13.0/crystal-1.13.0-1-darwin-universal.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.14.0/crystal-1.14.0-1-darwin-universal.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.13.0/crystal-1.13.0-1-darwin-universal.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.14.0/crystal-1.14.0-1-darwin-universal.tar.gz"
       }
     },
     "crystal-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1720554583,
-        "narHash": "sha256-LgR4aw2A/IqR6MraHvXmzn9NwtmuQ/bfUiQvs+h2VjQ=",
+        "lastModified": 1728475780,
+        "narHash": "sha256-ayMF5yinHVOUaZxhlmqxb/iiGJHmloeYuKcnrPmxo9Y=",
         "owner": "crystal-lang",
         "repo": "crystal",
-        "rev": "6831e441f1353455f53360820d6cafd5b8bbee35",
+        "rev": "dacd97bccc80b41c7d6c448cfad19d37184766e9",
         "type": "github"
       },
       "original": {
         "owner": "crystal-lang",
-        "ref": "1.13.0",
+        "ref": "1.14.0",
         "repo": "crystal",
         "type": "github"
       }
@@ -67,42 +67,42 @@
     "crystal-x86_64-darwin": {
       "flake": false,
       "locked": {
-        "lastModified": 1720555666,
-        "narHash": "sha256-98JsGh1m7WDZ6hM/dzWr/TlqqHv+pCEC+qWR0QkHNco=",
+        "lastModified": 1728476979,
+        "narHash": "sha256-nL/cXIYjLPQY0fAo4FmuejbUh67XuSU2mZET+WwdtyY=",
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.13.0/crystal-1.13.0-1-darwin-universal.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.14.0/crystal-1.14.0-1-darwin-universal.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.13.0/crystal-1.13.0-1-darwin-universal.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.14.0/crystal-1.14.0-1-darwin-universal.tar.gz"
       }
     },
     "crystal-x86_64-linux": {
       "flake": false,
       "locked": {
-        "lastModified": 1720555417,
-        "narHash": "sha256-eJgr/aSL6uzu06Ce778cLNJ7WjZ22rJwIeiKFBr2F4M=",
+        "lastModified": 1728476515,
+        "narHash": "sha256-v/g4g80kXCkBIqNBHXRE7VNiz4pwsZA47cm9t6MQq1w=",
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.13.0/crystal-1.13.0-1-linux-x86_64.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.14.0/crystal-1.14.0-1-linux-x86_64.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/crystal-lang/crystal/releases/download/1.13.0/crystal-1.13.0-1-linux-x86_64.tar.gz"
+        "url": "https://github.com/crystal-lang/crystal/releases/download/1.14.0/crystal-1.14.0-1-linux-x86_64.tar.gz"
       }
     },
     "crystalline-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1715666181,
-        "narHash": "sha256-Exv83jmSyhJv90Oo4oApZwNgNjy7tOKxLNh7yJIbfws=",
+        "lastModified": 1728675679,
+        "narHash": "sha256-6ZAogEuOJH1QQ6NSJ+8KZUSFSgQAcvd4U9vWNAGix/M=",
         "owner": "elbywan",
         "repo": "crystalline",
-        "rev": "7bd95d95144676e1ffc358673831c44bf2c93660",
+        "rev": "4bac6805fd80a53887bd38628c8ec9b49a9b86bc",
         "type": "github"
       },
       "original": {
         "owner": "elbywan",
-        "ref": "v0.13.1",
+        "ref": "v0.15.0",
         "repo": "crystalline",
         "type": "github"
       }
@@ -112,11 +112,11 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1672152762,
-        "narHash": "sha256-U8iWWHgabN07zfbgedogMVWrEP1Zywyf3Yx3OYHSSgE=",
+        "lastModified": 1733312601,
+        "narHash": "sha256-4pDvzqnegAfRkPwO3wmwBhVi/Sye1mzps0zHWYnP88c=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "19e0f88324d90509141e192664ded98bb88ef9b2",
+        "rev": "205b12d8b7cd4802fbcb8e8ef6a0f1408781a4f9",
         "type": "github"
       },
       "original": {
@@ -127,36 +127,30 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1677543769,
-        "narHash": "sha256-LwbqS8vGisXl2WHpK9r5+kodr0zoIT8F2YB0R4y1TsA=",
+        "lastModified": 1735141468,
+        "narHash": "sha256-VIAjBr1qGcEbmhLwQJD6TABppPMggzOvqFsqkDoMsAY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b26d52c9feb6476580016e78935cbf96eb3e2115",
+        "rev": "4005c3ff7505313cbc21081776ad0ce5dfd7a3ce",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-22.11",
+        "ref": "nixos-24.11",
         "repo": "nixpkgs",
         "type": "github"
       }
     },
     "nixpkgs-lib": {
       "locked": {
-        "dir": "lib",
-        "lastModified": 1671359686,
-        "narHash": "sha256-3MpC6yZo+Xn9cPordGz2/ii6IJpP2n8LE8e/ebUXLrs=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "04f574a1c0fde90b51bf68198e2297ca4e7cccf4",
-        "type": "github"
+        "lastModified": 1733096140,
+        "narHash": "sha256-1qRH7uAUsyQI7R1Uwl4T+XvdNv778H0Nb5njNrqvylY=",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/5487e69da40cbd611ab2cadee0b4637225f7cfae.tar.gz"
       },
       "original": {
-        "dir": "lib",
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/5487e69da40cbd611ab2cadee0b4637225f7cfae.tar.gz"
       }
     },
     "root": {
