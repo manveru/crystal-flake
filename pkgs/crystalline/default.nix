@@ -4,6 +4,7 @@
   crystal,
   llvmPackages,
   openssl,
+  shards,
   lib,
   makeWrapper,
 }:
@@ -30,7 +31,7 @@ crystal.buildCrystalPackage rec {
 
   format = "crystal";
 
-  nativeBuildInputs = [llvmPackages.llvm openssl makeWrapper];
+  nativeBuildInputs = [llvmPackages.llvm openssl makeWrapper shards];
 
   doCheck = false;
   doInstallCheck = false;
