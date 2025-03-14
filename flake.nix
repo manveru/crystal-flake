@@ -6,22 +6,22 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     crystal-src = {
-      url = "github:crystal-lang/crystal/1.14.0";
+      url = "github:crystal-lang/crystal/1.15.1";
       flake = false;
     };
 
     crystal-x86_64-darwin = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.14.0/crystal-1.14.0-1-darwin-universal.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.15.1/crystal-1.15.1-1-darwin-universal.tar.gz";
       flake = false;
     };
 
     crystal-x86_64-linux = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.14.0/crystal-1.14.0-1-linux-x86_64.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.15.1/crystal-1.15.1-1-linux-x86_64.tar.gz";
       flake = false;
     };
 
     crystal-aarch64-darwin = {
-      url = "https://github.com/crystal-lang/crystal/releases/download/1.14.0/crystal-1.14.0-1-darwin-universal.tar.gz";
+      url = "https://github.com/crystal-lang/crystal/releases/download/1.15.1/crystal-1.15.1-1-darwin-universal.tar.gz";
       flake = false;
     };
 
@@ -31,7 +31,7 @@
     };
 
     crystalline-src = {
-      url = "github:elbywan/crystalline/v0.15.0";
+      url = "github:elbywan/crystalline/v0.16.0";
       flake = false;
     };
 
@@ -53,8 +53,8 @@
         ...
       }: {
         overlayAttrs = let
-          crystalVersion = "1.14.0";
-          crystallineVersion = "0.15.0";
+          crystalVersion = "1.15.1";
+          crystallineVersion = "0.16.0";
           bdwgcVersion = "8.2.8";
           amebaVersion = "1.6.4";
           llvmPackages = pkgs.llvmPackages_16;
