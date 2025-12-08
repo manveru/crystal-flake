@@ -71,10 +71,25 @@ def update(org : String, repo : String, recency = Recency::Latest)
     case recency
     in Recency::Latest
       response = client.get("/repos/#{org}/#{repo}/releases/latest")
+      while response.status.redirection?
+        new_url = URI.parse(response.headers["Location"])
+        response = client.get(new_url.request_target)
+      end
       Release.from_json(response.body)
     in Recency::Newest
       response = client.get("/repos/#{org}/#{repo}/releases")
-      Array(Release).from_json(response.body).first
+      while response.status.redirection?
+        new_url = URI.parse(response.headers["Location"])
+        response = client.get(new_url.request_target)
+      end
+
+      body = response.body
+
+      begin
+        Array(Release).from_json(body).first
+      rescue
+        raise "Invalid response: #{body}"
+      end
     end
 
   old_source = begin
@@ -125,7 +140,7 @@ def update(org : String, repo : String, recency = Recency::Latest)
   if any
     File.write("flake.nix", flake)
     status = Process.run("nix", args: ["flake", "lock", "--update-input", "#{repo}-src"])
-    raise "failed to update the flake.lock: #{status.exit_status}" unless status.success?
+    raise "failed to update the flake.lock: #{status.exit_reason} (#{status.exit_code?})" unless status.success?
   end
 
   pkg_dir = Path.new(Dir.current, "pkgs", repo)
